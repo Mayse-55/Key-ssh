@@ -60,7 +60,7 @@ Pour autoriser l’authentification par clé SSH et définir les restrictions d�
 sudo nano /etc/ssh/sshd_config
 ```
 
-Assure-toi que ces paramètres sont présents et correctement configurés :
+Assure-toi que ces paramètres sont présents et correctement configurés (optionnel) :
 
 ```
 PermitRootLogin prohibit-password
