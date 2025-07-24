@@ -1,5 +1,3 @@
----
-
 # Configuration SSH pour Guacamole (connexion sans mot de passe via clé SSH)
 
 ---
