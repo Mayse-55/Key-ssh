@@ -1,12 +1,12 @@
-# Configuration SSH pour Guacamole (connexion sans mot de passe via clé SSH)
+# Configuration SSH (connexion sans mot de passe via clé SSH)
 
 ---
 
-## 1. Génération de la clé SSH sur le serveur Guacamole
+## 1. Génération de la clé SSH sur le serveur
 
 Pour que Guacamole puisse se connecter à tes serveurs Debian sans mot de passe, il faut générer une paire de clés SSH **sans passphrase** (c’est-à-dire sans mot de passe sur la clé).
 
-Exécute cette commande sur le serveur où tourne Guacamole :
+Exécute cette commande sur le serveur :
 
 ```bash
 sudo ssh-keygen -t ed25519 -f /etc/guacamole/guac_key -N ""
@@ -20,7 +20,7 @@ sudo ssh-keygen -t ed25519 -f /etc/guacamole/guac_key -N ""
 
 ## 2. Copier la clé publique sur le serveur Debian cible
 
-Pour permettre à Guacamole de se connecter **sans mot de passe**, la clé publique générée doit être ajoutée dans le fichier `authorized_keys` de l’utilisateur sur la machine cible (par exemple `root`).
+Pour permettre au serveur de se connecter **sans mot de passe**, la clé publique générée doit être ajoutée dans le fichier `authorized_keys` de l’utilisateur sur la machine cible (par exemple `root`).
 
 Utilise cette commande depuis le serveur Guacamole :
 
@@ -35,9 +35,9 @@ ssh-copy-id -i /etc/guacamole/guac_key.pub root@192.168.1.12
 
 ## 3. Tester la connexion SSH manuellement
 
-Avant de configurer Guacamole, il est essentiel de vérifier que la connexion SSH fonctionne correctement et sans mot de passe.
+Avant de configurer le serveur, il est essentiel de vérifier que la connexion SSH fonctionne correctement et sans mot de passe.
 
-Sur le serveur Guacamole, lance :
+Sur le serveur, lance :
 
 ```bash
 ssh -i /etc/guacamole/guac_key root@192.168.1.12
